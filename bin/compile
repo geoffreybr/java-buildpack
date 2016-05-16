@@ -3,6 +3,7 @@
 
 # fail fast
 set -e
+set -x
 
 BP_DIR=$(cd $(dirname $0)/..; pwd) # absolute path
 . $BP_DIR/lib/common.sh
