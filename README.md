@@ -74,10 +74,29 @@ There are three config variables that can be used to customize the Maven executi
 These variables can be set like this:
 
 ```sh-session
-$ scalingo env-set MAVEN_CUSTOM_GOALS="clean package"
+$ scalingo env-set MAVEN_CUSTOM_GOALS="clean package" 
 $ scalingo env-unset MAVEN_CUSTOM_OPTS="--update-snapshots -DskipTests=true"
 $ scalingo env-set MAVEN_JAVA_OPTS="-Xss2g"
 ```
+
+## Install Java and nothing else (no maven)
+
+In the case of a combination of buildpack, you may want to install a custom
+version of the JDK/JRE in addition to the other technologies you are using.
+
+Use the branch `javaonly` for this purpose, it will always accept to threat
+your app as a Java application and will only install the JDK and stop the build
+there.
+
+In the case of the use of the [multi buildpack](http://doc.scalingo.com/buildpacks/multi/),
+your `.buildpacks` file should look like:
+
+```
+https://github.com/Scalingo/java-buildpack#javaonly
+https://github.com/Scalingo/python-buildpack
+```
+
+Change python with the technology you are using.
 
 ## Development
 
